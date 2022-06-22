@@ -1,21 +1,20 @@
 pipeline {
     agent any
-    def app
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                app = docker.build("pcdhan/erp-systeme")
+                echo 'Building...'
+                sh 'docker build -t pcdhan/erp-system:v1 .'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing...'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying...'
             }
         }
     }
