@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh 'docker build -t pcdhan/erp-system:v1 .'
+                sh 'docker build -t pcdhan/erp-system:${env.GIT_COMMIT} .'
             }
         }
         stage('Test') {
