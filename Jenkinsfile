@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                app = docker.build("pcdhan/erp-systeme")
             }
         }
         stage('Test') {
