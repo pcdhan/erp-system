@@ -4,9 +4,10 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    COMMITID = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+                    COMMITID = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                 }
                 echo 'Building...'
+                echo '${COMMITID}'
                 sh 'docker build -t pcdhan/erp-system:${COMMITID} .'
             }
         }
