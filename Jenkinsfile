@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    COMMITID = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
+                    COMMITID = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                 }
                 echo 'Building...'
                 echo "${COMMITID}"
