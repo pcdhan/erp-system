@@ -7,8 +7,8 @@ pipeline {
                     COMMITID = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
                 }
                 echo 'Building...'
-                echo '${COMMITID}'
-                sh 'docker build -t pcdhan/erp-system:${COMMITID} .'
+                echo "${COMMITID}"
+                sh "docker build -t pcdhan/erp-system:${COMMITID} ."
             }
         }
         stage('Test') {
