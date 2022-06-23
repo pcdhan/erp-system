@@ -2,13 +2,12 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            environmnet {
-            // get git commit from Jenkins
-            GIT_COMMIT = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
-            }
             steps {
+                script {
+                    env.COMMITID = sh(script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+                }
                 echo 'Building...'
-                sh 'docker build -t pcdhan/erp-system:${GIT_COMMIT} .'
+                sh 'docker build -t pcdhan/erp-system:${env.COMMITID} .'
             }
         }
         stage('Test') {
