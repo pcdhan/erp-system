@@ -19,7 +19,7 @@ pipeline {
         stage('Publish') {
             steps {
                 echo 'Deploying...'
-                sh "docker login -u=${env.DOCKER_USERNAME} -p=${env.DOCKER_PASSWORD}"
+                sh "docker login ${env.CONTAINER_REGISTRY} -u=${env.DOCKER_USERNAME} -p=${env.DOCKER_PASSWORD}"
                 echo "Successfully logged in to JFrog"
             }
         }
